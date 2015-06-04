@@ -1,23 +1,33 @@
 {
-	"name": "ijackua/yii2-sharelinks-widget",
-	"description": "Yii2 widget for popular social networks 'share link' generation",
-	"keywords": ["share", "social", "network", "yii", "extension", "widget"],
-	"homepage": "https://github.com/iJackUA/yii2-sharelinks-widget",
-	"type": "yii2-extension",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Evgeniy Kuzminov",
-			"email": "kyzminov@gmail.com",
-			"homepage" : "http://stdout.in"
-		}
-	],
-	"require": {
-		"yiisoft/yii2": "*"
-	},
-	"autoload": {
-		"psr-4": {
-			"ijackua\\sharelinks\\": ""
-		}
-	}
+    "name": "dlds/yii2-shareit",
+    "description": "Yii2 Social share component",
+    "keywords": ["yii2", "shareit", "integration"],
+    "type": "yii2-extension",
+    "license": "BSD",
+    "support": {
+        "issues": "https://github.com/dlds/yii2-shareit/issues",
+        "wiki": "https://github.com/dlds/yii2-shareit/wiki",
+        "source": "https://github.com/dlds/yii2-shareit"
+    },
+    "authors": [
+        {
+            "name": "Jiri Svoboda",
+            "email": "jiri.svoboda@dlds.cz"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-faker": "*",
+        "codeception/specify": "*",
+        "codeception/verify": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dlds\\shareit\\": "src"
+        }
+    }
 }

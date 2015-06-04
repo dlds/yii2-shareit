@@ -1,12 +1,12 @@
 <?php
-namespace ijackua\sharelinks;
+namespace dlds\shareit;
 
 use Yii;
 use yii\web\AssetBundle;
 
 class ShareLinksAssets extends AssetBundle
 {
-	public $sourcePath = '@sharelinks/assets';
+	public $sourcePath = '@shareit/assets';
 	public $basePath = '@webroot/assets';
 	public $js = [
 		'social.js'
@@ -17,7 +17,7 @@ class ShareLinksAssets extends AssetBundle
 	];
 
 	public function init() {
-		Yii::setAlias('@sharelinks', __DIR__);
+		Yii::setAlias('@shareit', __DIR__);
 		return parent::init();
 	}
 }
