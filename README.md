@@ -1,7 +1,7 @@
-yii2-sharelinks-widget
-======================
+yii2-shareit
+============
 
-Yii2 widget for popular social networks "share link" generation
+Yii2 Social Share links generator
 
 ## Supported Social Networks
 

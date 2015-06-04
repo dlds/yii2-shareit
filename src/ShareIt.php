@@ -34,7 +34,7 @@ class ShareLinks extends \yii\base\Widget {
      *
      * @var array
      */
-    public $shareItMap = [
+    public $networkMap = [
         self::SOCIAL_TWITTER => 'https://twitter.com/intent/tweet?url={url}',
         self::SOCIAL_FACEBOOK => 'https://www.facebook.com/sharer/sharer.php?u={url}',
         self::SOCIAL_VKONTAKTE => 'http://vk.com/share.php?url={url}',
@@ -62,8 +62,15 @@ class ShareLinks extends \yii\base\Widget {
      * @param type $url
      * @return type
      */
-    public function shareLink($network, $options = [], $url = false)
+    public function shareLink($network, $options = [], $text = false, $url = false)
     {
-        return str_replace('{url}', urlencode($this->url), ArrayHelper::getValue($this->shareUrlMap, $networkId));
+        $network = ArrayHelper::getValue($this->networkMap, $network);
+
+        if ($network)
+        {
+            return Html::a($text, str_replace('{url}', urlencode($this->url), $network), $options);
+        }
+
+        return null;
     }
 }
