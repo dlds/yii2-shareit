@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use dlds\shareit\ShareItAssets;
 
-class ShareIt extends \yii\base\Widget {
+class ShareIt extends \yii\base\Component {
 
     /**
      * Constants representing each social
