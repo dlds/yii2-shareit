@@ -4,7 +4,7 @@ namespace dlds\shareit;
 use Yii;
 use yii\web\AssetBundle;
 
-class ShareLinksAssets extends AssetBundle
+class ShareItAssets extends AssetBundle
 {
 	public $sourcePath = '@shareit/assets';
 	public $basePath = '@webroot/assets';

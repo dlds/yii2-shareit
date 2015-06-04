@@ -5,9 +5,9 @@ namespace dlds\shareit;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use dlds\shareit\ShareLinksAssets;
+use dlds\shareit\ShareItAssets;
 
-class ShareLinks extends \yii\base\Widget {
+class ShareIt extends \yii\base\Widget {
 
     /**
      * Constants representing each social
@@ -27,7 +27,7 @@ class ShareLinks extends \yii\base\Widget {
     /**
      * @var string jQuery selector for sharing links (to bind popup on click there)
      */
-    public $linkSelector = '.shareit-link';
+    public $linkClassSelector = 'shareit-link';
 
     /**
      * Sharing url template for each network
@@ -45,15 +45,12 @@ class ShareLinks extends \yii\base\Widget {
 
     public function init()
     {
-        $this->url = (empty($this->url)) ? Yii::$app->getRequest()->getAbsoluteUrl() : $this->url;
-        ShareLinksAssets::register($this->view);
-    }
-
-    public function run()
-    {
-        $js = '$("'.$this->linkSelector.'").yiiShareLinks();';
+        $js = '$(".'.$this->linkClassSelector.'").yiiShareLinks();';
         $this->view->registerJs($js);
-        echo $this->render($this->viewName);
+
+        $this->url = (empty($this->url)) ? Yii::$app->getRequest()->getAbsoluteUrl() : $this->url;
+
+        ShareItAssets::register($this->view);
     }
 
     /**
@@ -68,7 +65,14 @@ class ShareLinks extends \yii\base\Widget {
 
         if ($network)
         {
-            return Html::a($text, str_replace('{url}', urlencode($this->url), $network), $options);
+            Html::addCssClass($options, $this->linkClassSelector);
+
+            if (false === $url)
+            {
+                $url = $this->url;
+            }
+
+            return Html::a($text, str_replace('{url}', urlencode($url), $network), $options);
         }
 
         return null;
