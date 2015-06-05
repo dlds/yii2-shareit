@@ -45,12 +45,18 @@ class ShareIt extends \yii\base\Component {
 
     public function init()
     {
-        $js = '$(".'.$this->linkClassSelector.'").yiiShareLinks();';
-        $this->view->registerJs($js);
+        $view = $this->getView();
+
+        if ($view)
+        {
+            $js = '$(".'.$this->linkClassSelector.'").yiiShareLinks();';
+
+            $this->getView()->registerJs($js);
+
+            ShareItAssets::register($this->view);
+        }
 
         $this->url = (empty($this->url)) ? Yii::$app->getRequest()->getAbsoluteUrl() : $this->url;
-
-        ShareItAssets::register($this->view);
     }
 
     /**
@@ -76,5 +82,19 @@ class ShareIt extends \yii\base\Component {
         }
 
         return null;
+    }
+
+    /**
+     * Get current app view
+     * @return \yii\web\View
+     */
+    protected function getView()
+    {
+        if (\Yii::$app && \Yii::$app->controller && \Yii::$app->controller->view)
+        {
+            return \Yii::$app->controller->view;
+        }
+
+        return false;
     }
 }
